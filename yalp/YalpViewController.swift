@@ -28,11 +28,14 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         yalpTableView.delegate = self
         yalpTableView.dataSource = self
+        yalpTableView.rowHeight = UITableViewAutomaticDimension
+//        self.navigationItem.titleView = ""
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
         client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             self.searchResults = response["businesses"] as [NSDictionary]
+            println(self.searchResults)
             self.yalpTableView.reloadData()
             
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
@@ -49,11 +52,19 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var result = self.searchResults![indexPath.row]
-        println(result["name"]!)
+        var index = indexPath.row
+        var result = self.searchResults![index]
+        var name = result["name"]! as String
+        var reviewsCount = result["review_count"]! as Int
+        var imageUrl = result["image_url"]! as String
+        var ratingImageUrl = result["rating_img_url"]! as String
         
         let cell = yalpTableView.dequeueReusableCellWithIdentifier("YalpTableViewCell") as YalpTableViewCell
-        cell.resultNameLabel.text = result["name"] as? String
+        cell.resultNameLabel.text = "\(index + 1). \(name)"
+        cell.resultNameLabel.sizeToFit()
+        cell.reviewsCountLabel.text = "\(reviewsCount) Reviews"
+        cell.resultImage.setImageWithURL(NSURL(string: imageUrl))
+        cell.resultRatingImage.setImageWithURL(NSURL(string: ratingImageUrl))
         
         return cell
     }

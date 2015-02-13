@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurants-->
+        <!--Yalp View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="YalpViewController" customModule="yalp" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,22 +27,64 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8w6-Cc-LkG" id="IJY-yB-fs9">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Samila Thai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gea-lz-t3H">
-                                                    <rect key="frame" x="8" y="8" width="304" height="21"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PDT-No-u0o">
+                                                    <rect key="frame" x="8" y="6" width="74" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="XP4-8h-mfH"/>
+                                                        <constraint firstAttribute="width" constant="74" id="b9q-8W-GVo"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="1. Samila Thai" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gea-lz-t3H">
+                                                    <rect key="frame" x="90" y="8" width="157" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.07 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJS-fF-ayI">
+                                                    <rect key="frame" x="255" y="6" width="57" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uNt-pS-yDG">
+                                                    <rect key="frame" x="90" y="32" width="90" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="D40-ar-xdZ"/>
+                                                        <constraint firstAttribute="width" constant="90" id="rN5-CW-CXg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="146 Reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-K0-uFP">
+                                                    <rect key="frame" x="185" y="32" width="76" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="xez-49-mbU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerX" secondItem="Gea-lz-t3H" secondAttribute="centerX" id="6d7-wu-Oq3"/>
-                                                <constraint firstItem="Gea-lz-t3H" firstAttribute="leading" secondItem="IJY-yB-fs9" secondAttribute="leadingMargin" id="6wU-dC-Mz5"/>
-                                                <constraint firstAttribute="centerY" secondItem="Gea-lz-t3H" secondAttribute="centerY" constant="29" id="Uhr-i9-3z6"/>
-                                                <constraint firstItem="Gea-lz-t3H" firstAttribute="top" secondItem="IJY-yB-fs9" secondAttribute="topMargin" id="grJ-hd-FZg"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wJS-fF-ayI" secondAttribute="bottom" constant="60.5" id="0J5-0I-a00"/>
+                                                <constraint firstItem="4Lo-K0-uFP" firstAttribute="top" secondItem="Gea-lz-t3H" secondAttribute="bottom" constant="2.5" id="1q2-Kj-SH4"/>
+                                                <constraint firstItem="wJS-fF-ayI" firstAttribute="top" secondItem="IJY-yB-fs9" secondAttribute="topMargin" constant="-2" id="6LC-7K-QJe"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PDT-No-u0o" secondAttribute="trailing" constant="230" id="6fW-hY-Ec4"/>
+                                                <constraint firstItem="wJS-fF-ayI" firstAttribute="leading" secondItem="Gea-lz-t3H" secondAttribute="trailing" constant="8" id="AYL-Q7-W8f"/>
+                                                <constraint firstItem="PDT-No-u0o" firstAttribute="leading" secondItem="IJY-yB-fs9" secondAttribute="leadingMargin" id="LN3-6W-wTZ"/>
+                                                <constraint firstItem="Gea-lz-t3H" firstAttribute="top" secondItem="IJY-yB-fs9" secondAttribute="topMargin" id="QPY-A3-wJL"/>
+                                                <constraint firstItem="uNt-pS-yDG" firstAttribute="top" secondItem="Gea-lz-t3H" secondAttribute="bottom" constant="3" id="Vtn-Up-s8J"/>
+                                                <constraint firstItem="wJS-fF-ayI" firstAttribute="trailing" secondItem="IJY-yB-fs9" secondAttribute="trailingMargin" id="X4M-yx-eZS"/>
+                                                <constraint firstItem="uNt-pS-yDG" firstAttribute="leading" secondItem="Gea-lz-t3H" secondAttribute="leading" id="hws-bb-aP8"/>
+                                                <constraint firstItem="wJS-fF-ayI" firstAttribute="trailing" secondItem="IJY-yB-fs9" secondAttribute="trailingMargin" id="ncH-9p-zVB"/>
+                                                <constraint firstItem="4Lo-K0-uFP" firstAttribute="leading" secondItem="uNt-pS-yDG" secondAttribute="trailing" constant="5" id="r0j-w1-173"/>
+                                                <constraint firstItem="Gea-lz-t3H" firstAttribute="leading" secondItem="PDT-No-u0o" secondAttribute="trailing" constant="8" id="r6W-D5-5ec"/>
+                                                <constraint firstItem="PDT-No-u0o" firstAttribute="top" secondItem="IJY-yB-fs9" secondAttribute="topMargin" constant="-2" id="stP-pZ-etP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="resultImage" destination="PDT-No-u0o" id="FZD-nC-4Qn"/>
                                             <outlet property="resultNameLabel" destination="Gea-lz-t3H" id="sbY-BQ-9i3"/>
+                                            <outlet property="resultRatingImage" destination="uNt-pS-yDG" id="UYz-Cz-wle"/>
+                                            <outlet property="reviewsCountLabel" destination="4Lo-K0-uFP" id="FQZ-ax-szE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -56,7 +98,7 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="HwL-cC-Ikb" secondAttribute="bottom" id="WAZ-D0-EkV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Restaurants" id="Ldv-Nk-ECM"/>
+                    <navigationItem key="navigationItem" id="Ldv-Nk-ECM"/>
                     <connections>
                         <outlet property="yalpTableView" destination="HwL-cC-Ikb" id="xcA-hx-3cK"/>
                     </connections>

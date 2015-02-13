@@ -11,11 +11,13 @@ import UIKit
 class YalpTableViewCell: UITableViewCell {
 
     @IBOutlet weak var resultNameLabel: UILabel!
+    @IBOutlet weak var resultImage: UIImageView!
+    @IBOutlet weak var resultRatingImage: UIImageView!
+    @IBOutlet weak var reviewsCountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        var resultName = resultNameLabel
         
     }
 
