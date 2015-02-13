@@ -1,5 +1,5 @@
 //
-//  YelpTableViewCell.swift
+//  YalpTableViewCell.swift
 //  yalp
 //
 //  Created by Daniel Apczynski on 2/10/15.
@@ -8,11 +8,15 @@
 
 import UIKit
 
-class YelpTableViewCell: UITableViewCell {
+class YalpTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var resultNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        var resultName = resultNameLabel
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

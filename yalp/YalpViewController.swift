@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var client: YelpClient!
-    @IBOutlet weak var yelpTableView: UITableView!
+    var searchResults: [NSDictionary]! = []
+    
+    @IBOutlet weak var yalpTableView: UITableView!
     
     let yelpConsumerKey = "vxKwwcR_NMQ7WaEiQBK_CA"
     let yelpConsumerSecret = "33QCvh5bIF5jIHR5klQr7RtBDhQ"
@@ -24,25 +26,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        yelpTableView.delegate = self
-        yelpTableView.dataSource = self
+        yalpTableView.delegate = self
+        yalpTableView.dataSource = self
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
         client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            println(response)
+            self.searchResults = response["businesses"] as [NSDictionary]
+            self.yalpTableView.reloadData()
+            
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
         }
+        
+
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return searchResults.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = yelpTableView.dequeueReusableCellWithIdentifier("YelpTableViewCell") as YelpTableViewCell
+        var result = self.searchResults![indexPath.row]
+        println(result["name"]!)
+        
+        let cell = yalpTableView.dequeueReusableCellWithIdentifier("YalpTableViewCell") as YalpTableViewCell
+        cell.resultNameLabel.text = result["name"] as? String
         
         return cell
     }
