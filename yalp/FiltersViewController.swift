@@ -32,38 +32,6 @@ class FiltersViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let index = indexPath.row as Int
-//        let cell = tableView.dequeueReusableCellWithIdentifier("FilterCell") as FilterCell
-//        return cell
-//    }
-//    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        switch section {
-//            case 0:   return 3
-//            case 1:   return 2
-//            case 2:   return 3
-//            default:  return 1
-//        }
-//    }
-//    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch section {
-//            case 0:   return "Categories"
-//            case 1:   return "Sort"
-//            case 2:   return "Radius"
-//            default:  return "Deals"
-//        }
-//    }
-//    
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 30
-//    }
-//    
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 4
-//    }
     
     func cancelButtonClicked() -> Void {
         navigationController?.popViewControllerAnimated(true)
