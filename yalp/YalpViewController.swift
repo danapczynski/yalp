@@ -77,9 +77,11 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func performSearch(searchText: String) -> Void {
+        let term = getTerm()
+        
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm(yalpSearchBar.text, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTerm(term, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             self.searchResults = response["businesses"] as [NSDictionary]
 //            println(self.searchResults)
             self.yalpTableView.reloadData()
@@ -88,6 +90,13 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 println(error)
         }
 
+    }
+    
+    func getTerm() -> String {
+        switch (yalpSearchBar.text) {
+            case "": return "restaurants"
+            default: return yalpSearchBar.text
+        }
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navAppearance.barTintColor = UIColor(red: 175/255, green: 6/255, blue: 6/255, alpha: 0)
         navAppearance.tintColor = UIColor.whiteColor()
         
-        
         return true
     }
 
