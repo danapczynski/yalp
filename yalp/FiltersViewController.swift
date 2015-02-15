@@ -24,6 +24,7 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var distancesLabel: UILabel!
     @IBOutlet weak var sortLabel: UILabel!
+    var currentCategories = [String : Bool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
     }
     
     func categoriesFilterViewController(categoriesFilterVC: CategoriesFilterViewController, currentCatVCDictionary dict: [String : Bool]) {
+        currentCategories = dict
         setCategoriesLabel(dict)
     }
     
@@ -70,6 +72,7 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
         if segue.identifier == "categoriesSegue"{
             let vc = segue.destinationViewController as CategoriesFilterViewController
             vc.delegate = self
+            vc.categoriesDictionary = currentCategories
         }
     }
     
