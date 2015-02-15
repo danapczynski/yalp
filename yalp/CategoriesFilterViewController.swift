@@ -8,17 +8,25 @@
 
 import UIKit
 
+protocol CatFilterVCDelegate : class {
+    func categoriesFilterViewController(categoriesFilterVC: CategoriesFilterViewController, currentCatVCDictionary dict: [String : Bool])
+}
+
 class CategoriesFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CategoryFilterCellDelegate {
     
     let categories = [
         "Thai", "Mexican", "Italian", "Mediterranean", "French"
     ]
     
-    private var categoriesDictionary = [String : Bool]()
+    var categoriesDictionary = [String : Bool]()
+    weak var delegate: CatFilterVCDelegate?
 
     @IBOutlet weak var categoriesTableView: UITableView!
     
     @IBAction func backButton(sender: UIBarButtonItem) {
+        if (delegate != nil) {
+            delegate!.categoriesFilterViewController(self, currentCatVCDictionary: categoriesDictionary)
+        }
         backButtonClicked()
     }
     override func viewDidLoad() {
@@ -55,8 +63,9 @@ class CategoriesFilterViewController: UIViewController, UITableViewDelegate, UIT
         println(categoriesDictionary)
     }
     
-    func backButtonClicked() -> Void {
+    func backButtonClicked() -> [String : Bool] {
         navigationController?.popViewControllerAnimated(true)
+        return categoriesDictionary
     }
     
     override func didReceiveMemoryWarning() {

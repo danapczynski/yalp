@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FiltersViewController: UIViewController {
+class FiltersViewController: UIViewController, CatFilterVCDelegate {
 
     @IBOutlet weak var backdrop: UIView!
     @IBAction func cancelButton(sender: UIBarButtonItem) {
@@ -21,6 +21,9 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var distanceButton: UIButton!
     @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var dealsView: UIView!
+    @IBOutlet weak var categoriesLabel: UILabel!
+    @IBOutlet weak var distancesLabel: UILabel!
+    @IBOutlet weak var sortLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,35 @@ class FiltersViewController: UIViewController {
     
     func applyButtonClicked() -> Void {
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func resetLabel(label: UILabel) -> Void {
+        label.text = "None selected"
+    }
+    
+    func categoriesFilterViewController(categoriesFilterVC: CategoriesFilterViewController, currentCatVCDictionary dict: [String : Bool]) {
+        setCategoriesLabel(dict)
+    }
+    
+    private func setCategoriesLabel(dict: [String : Bool]){
+        if dict.isEmpty { resetLabel(categoriesLabel) }
+        else {
+            var categories = ""
+            for (cat, bool) in dict {
+                if bool {
+                    if categories.isEmpty { categories += cat }
+                    else { categories += ", \(cat)"}
+                }
+            }
+            categoriesLabel.text = categories
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "categoriesSegue"{
+            let vc = segue.destinationViewController as CategoriesFilterViewController
+            vc.delegate = self
+        }
     }
     
     override func didReceiveMemoryWarning() {

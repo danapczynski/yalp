@@ -145,7 +145,7 @@
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="CDp-M6-mY1" kind="push" id="ZC3-K9-f1u"/>
+                                            <segue destination="CDp-M6-mY1" kind="push" identifier="categoriesSegue" id="ZC3-K9-f1u"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8J-rE-NHl">
@@ -182,12 +182,6 @@
                                             <segue destination="gi8-ws-fTb" kind="push" id="T18-vH-ZR6"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None selected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkW-4d-Zj1">
-                                        <rect key="frame" x="103" y="228" width="204" height="21"/>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xC0-YY-acd">
                                         <rect key="frame" x="8" y="307" width="304" height="51"/>
                                         <subviews>
@@ -203,6 +197,12 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None selected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkW-4d-Zj1">
+                                        <rect key="frame" x="103" y="228" width="204" height="21"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.87667410710000004" green="0.20495028309999999" blue="0.13075854079999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -224,9 +224,12 @@
                     <connections>
                         <outlet property="backdrop" destination="sS5-d6-fj9" id="HQB-BB-On3"/>
                         <outlet property="categoriesButton" destination="huk-aG-1W8" id="gAp-kI-1BQ"/>
+                        <outlet property="categoriesLabel" destination="OGt-Ye-789" id="EEO-BC-keE"/>
                         <outlet property="dealsView" destination="xC0-YY-acd" id="V7X-lJ-X32"/>
                         <outlet property="distanceButton" destination="s8J-rE-NHl" id="G0k-tL-hZh"/>
+                        <outlet property="distancesLabel" destination="HnA-l6-Fx1" id="2CU-r0-zjw"/>
                         <outlet property="sortButton" destination="byZ-5n-Old" id="T1F-pX-xLg"/>
+                        <outlet property="sortLabel" destination="JkW-4d-Zj1" id="dUu-vr-4qi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PfB-1M-m9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
