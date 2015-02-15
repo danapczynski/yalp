@@ -12,10 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let navAppearance = UINavigationBar.appearance()
+        navAppearance.backgroundColor = UIColor(red: 175/255, green: 6/255, blue: 6/255, alpha: 0)
+        navAppearance.barTintColor = UIColor(red: 175/255, green: 6/255, blue: 6/255, alpha: 0)
+        navAppearance.tintColor = UIColor.whiteColor()
+        
+        
         return true
     }
 
@@ -40,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 
