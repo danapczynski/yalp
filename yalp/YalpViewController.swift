@@ -79,12 +79,14 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func performSearch(searchText: String) -> Void {
         let term = getTerm()
+        let categories = getCategories()
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm(term, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTerm(term, categories: categories, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             self.searchResults = response["businesses"] as [NSDictionary]
-//            println(self.searchResults)
+            println("categories: \(categories)")
+            if !categories.isEmpty { println(self.searchResults) }
             self.yalpTableView.reloadData()
             
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
@@ -100,6 +102,19 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func getCategories() -> String {
+        var str = ""
+        if (!filters.isEmpty && filters["categories"] != nil) {
+            for (category, bool) in filters["categories"]! {
+                if bool {
+                    if str.isEmpty { str += category }
+                    else {str += ",\(category)" }
+                }
+            }
+        }
+        return str.lowercaseString
+    }
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
@@ -107,6 +122,7 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func filtersViewController(filtersVC: FiltersViewController, filters: [String : [String : Bool]]) {
         println("filters in YALP OVERLORD: \(filters)")
         self.filters = filters
+        performSearch(getTerm())
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

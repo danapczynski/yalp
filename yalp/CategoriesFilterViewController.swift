@@ -15,7 +15,7 @@ protocol CatFilterVCDelegate : class {
 class CategoriesFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CategoryFilterCellDelegate {
     
     let categories = [
-        "Thai", "Mexican", "Italian", "Mediterranean", "French"
+        "Afghan", "African", "Arabian", "Argentine", "Armenian", "Asturian", "Australian", "Bangladeshi", "Basque", "Bavarian", "Belgian", "Black Sea", "Brasseries", "Brazilian", "British", "Bulgarian", "Burmese", "Cajun", "Cambodian", "Carribean", "Catalan", "Chech", "Chilean", "Chinese", "Cuban", "Czech", "Danish", "Ethiopian", "Filipino", "French", "German", "Greek", "Halal", "Hawaiian", "Hungarian", "Iberian", "Indian", "Indonesian", "Irish", "Israeli", "Italian", "Japanese", "Korean", "Laotian", "Latin", "Lebanese", "Malaysian", "Mediterranean", "Mexico", "Moroccan", "Pakistani", "Persian", "Pizza", "Peruvian", "Polish", "Russian", "Scandinavian", "Scottish", "Singaporean", "Spanish", "Swedish", "Taiwanese", "Turkish", "Ukranian", "Vietnamese", "Yugoslav"
     ]
     
     var categoriesDictionary = [String : Bool]()
