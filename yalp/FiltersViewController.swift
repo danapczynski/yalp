@@ -12,7 +12,7 @@ protocol FiltersVCDelegate : class {
     func filtersViewController(filtersVC: FiltersViewController, filters: [ String : [String : Bool] ])
 }
 
-class FiltersViewController: UIViewController, CatFilterVCDelegate {
+class FiltersViewController: UIViewController, CatFilterVCDelegate, DistanceFilterVCDelegate {
 
     weak var delegate: FiltersVCDelegate?
     @IBOutlet weak var backdrop: UIView!
@@ -36,9 +36,10 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
     @IBOutlet weak var sortLabel: UILabel!
     var previousCategories = [String : Bool]()
     var currentCategories = [String : Bool]()
+    var previousDistance = [String : Bool]()
+    var currentDistance = [String : Bool]()
     
     override func viewDidLoad() {
-        println(currentCategories)
         super.viewDidLoad()
         self.backdrop.backgroundColor = UIColor(red: 175/255, green: 6/255, blue: 6/255, alpha: 1)
         self.categoriesButton.layer.cornerRadius = 5
@@ -46,6 +47,10 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
         self.sortButton.layer.cornerRadius = 5
         self.dealsView.layer.cornerRadius = 5
         setCategoriesLabel(previousCategories)
+        
+        println("Previous Categories: \(previousCategories)")
+        
+        setDistanceLabel(previousDistance)
         
         // Do any additional setup after loading the view.
     }
@@ -81,10 +86,21 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
         }
     }
     
+    func distanceViewController(distanceFilterVC: DistanceViewController, dict: [String : Bool]) {
+        currentDistance = dict
+        setDistanceLabel(currentDistance)
+    }
+    
+    private func setDistanceLabel(dict: [String : Bool]){
+        if dict.isEmpty { resetLabel(distancesLabel) }
+        else { distancesLabel.text = [String](dict.keys)[0] }
+    }
+    
     func generateFilters(sender: UIBarButtonItem) -> [ String : [String : Bool] ]{
         var filters = [ String : [String : Bool] ]()
         if sender.action == "applyButtonAction:" {
             filters["categories"] = currentCategories
+            filters["distance"] = currentDistance
         } else {
             filters["categories"] = previousCategories
         }
@@ -96,6 +112,9 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
             let vc = segue.destinationViewController as CategoriesFilterViewController
             vc.delegate = self
             vc.categoriesDictionary = currentCategories
+        } else if segue.identifier == "distancesSegue" {
+            let vc = segue.destinationViewController as DistanceViewController
+            vc.delegate = self
         }
     }
     

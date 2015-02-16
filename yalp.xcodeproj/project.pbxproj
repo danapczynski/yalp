@@ -18,6 +18,8 @@
 		4716BCF61A90F2D80012FC1A /* CategoriesFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4716BCF51A90F2D80012FC1A /* CategoriesFilterViewController.swift */; };
 		4727C2FE1A9006780082FCC4 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727C2FD1A9006780082FCC4 /* FiltersViewController.swift */; };
 		4727C3001A900A090082FCC4 /* CategoryFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4727C2FF1A900A090082FCC4 /* CategoryFilterCell.swift */; };
+		47C973BC1A91BD0E00FA1078 /* DistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C973BB1A91BD0E00FA1078 /* DistanceViewController.swift */; };
+		47C973BE1A91BD2B00FA1078 /* DistanceFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C973BD1A91BD2B00FA1078 /* DistanceFilterCell.swift */; };
 		47EB523A1A8B3DF7006FA14C /* YalpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB52391A8B3DF7006FA14C /* YalpTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		4716BCF51A90F2D80012FC1A /* CategoriesFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesFilterViewController.swift; sourceTree = "<group>"; };
 		4727C2FD1A9006780082FCC4 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		4727C2FF1A900A090082FCC4 /* CategoryFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFilterCell.swift; sourceTree = "<group>"; };
+		47C973BB1A91BD0E00FA1078 /* DistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceViewController.swift; sourceTree = "<group>"; };
+		47C973BD1A91BD2B00FA1078 /* DistanceFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceFilterCell.swift; sourceTree = "<group>"; };
 		47EB52391A8B3DF7006FA14C /* YalpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YalpTableViewCell.swift; sourceTree = "<group>"; };
 		4AFBCF435D1BF026E94948C4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -111,6 +115,8 @@
 				4727C2FD1A9006780082FCC4 /* FiltersViewController.swift */,
 				4716BCF51A90F2D80012FC1A /* CategoriesFilterViewController.swift */,
 				4727C2FF1A900A090082FCC4 /* CategoryFilterCell.swift */,
+				47C973BB1A91BD0E00FA1078 /* DistanceViewController.swift */,
+				47C973BD1A91BD2B00FA1078 /* DistanceFilterCell.swift */,
 				4710B68E1A8B315C00260E07 /* Images.xcassets */,
 				4710B6851A8B315C00260E07 /* Supporting Files */,
 			);
@@ -289,11 +295,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4710B68A1A8B315C00260E07 /* YalpViewController.swift in Sources */,
+				47C973BC1A91BD0E00FA1078 /* DistanceViewController.swift in Sources */,
 				4716BCF61A90F2D80012FC1A /* CategoriesFilterViewController.swift in Sources */,
 				4727C3001A900A090082FCC4 /* CategoryFilterCell.swift in Sources */,
 				4710B6AB1A8B395B00260E07 /* YelpClient.swift in Sources */,
 				4710B6881A8B315C00260E07 /* AppDelegate.swift in Sources */,
 				47EB523A1A8B3DF7006FA14C /* YalpTableViewCell.swift in Sources */,
+				47C973BE1A91BD2B00FA1078 /* DistanceFilterCell.swift in Sources */,
 				4727C2FE1A9006780082FCC4 /* FiltersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

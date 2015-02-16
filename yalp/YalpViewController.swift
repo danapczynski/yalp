@@ -35,9 +35,6 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
         yalpTableView.estimatedRowHeight = 100
         self.navigationItem.titleView = yalpSearchBar
         
-        // let filterButton = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "onFilterButton")
-        // self.navigationItem.leftBarButtonItem = filterButton
-        
         performSearch("")
 
         // Do any additional setup after loading the view, typically from a nib.
@@ -80,10 +77,11 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func performSearch(searchText: String) -> Void {
         let term = getTerm()
         let categories = getCategories()
+        let distance = getDistance()
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm(term, categories: categories, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTerm(term, categories: categories, distance: distance, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             self.searchResults = response["businesses"] as [NSDictionary]
             println("categories: \(categories)")
             if !categories.isEmpty { println(self.searchResults) }
@@ -115,6 +113,23 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return str.lowercaseString
     }
     
+    func getDistance() -> Int {
+        var int = 40000
+        if (!filters.isEmpty && filters["distance"] != nil) {
+            for (distance, bool) in filters["distance"]! {
+                if bool {
+                    switch distance {
+                    case "15 miles": int = 24140
+                    case "10 miles": int = 16093
+                    case "5 miles": int = 8047
+                    default: int = 1609 // 1 mile
+                    }
+                }
+            }
+        }
+        return int
+    }
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
@@ -133,6 +148,11 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if (!filters.isEmpty && filters["categories"] != nil) {
                 vc.currentCategories = filters["categories"]!
                 vc.previousCategories = filters["categories"]!
+            }
+            
+            if (!filters.isEmpty && filters["distance"] != nil) {
+                vc.currentDistance = filters["distance"]!
+                vc.previousDistance = filters["distance"]!
             }
         }
     }
