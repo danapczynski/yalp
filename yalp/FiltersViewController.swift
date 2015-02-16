@@ -8,13 +8,23 @@
 
 import UIKit
 
+protocol FiltersVCDelegate : class {
+    func filtersViewController(filtersVC: FiltersViewController, filters: [ String : [String : Bool] ])
+}
+
 class FiltersViewController: UIViewController, CatFilterVCDelegate {
 
+    weak var delegate: FiltersVCDelegate?
     @IBOutlet weak var backdrop: UIView!
-    @IBAction func cancelButton(sender: UIBarButtonItem) {
+    @IBOutlet weak var applyButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBAction func cancelButtonAction(sender: UIBarButtonItem) {
         cancelButtonClicked()
     }
-    @IBAction func applyButton(sender: UIBarButtonItem) {
+    @IBAction func applyButtonAction(sender: UIBarButtonItem) {
+        if (delegate != nil) {
+            delegate!.filtersViewController(self, filters: generateFilters(sender))
+        }
         applyButtonClicked()
     }
     @IBOutlet weak var categoriesButton: UIButton!
@@ -24,15 +34,18 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var distancesLabel: UILabel!
     @IBOutlet weak var sortLabel: UILabel!
+    var previousCategories = [String : Bool]()
     var currentCategories = [String : Bool]()
     
     override func viewDidLoad() {
+        println(currentCategories)
         super.viewDidLoad()
         self.backdrop.backgroundColor = UIColor(red: 175/255, green: 6/255, blue: 6/255, alpha: 1)
         self.categoriesButton.layer.cornerRadius = 5
         self.distanceButton.layer.cornerRadius = 5
         self.sortButton.layer.cornerRadius = 5
         self.dealsView.layer.cornerRadius = 5
+        setCategoriesLabel(previousCategories)
         
         // Do any additional setup after loading the view.
     }
@@ -66,6 +79,16 @@ class FiltersViewController: UIViewController, CatFilterVCDelegate {
             }
             categoriesLabel.text = categories
         }
+    }
+    
+    func generateFilters(sender: UIBarButtonItem) -> [ String : [String : Bool] ]{
+        var filters = [ String : [String : Bool] ]()
+        if sender.action == "applyButtonAction:" {
+            filters["categories"] = currentCategories
+        } else {
+            filters["categories"] = previousCategories
+        }
+        return filters
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

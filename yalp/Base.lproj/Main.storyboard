@@ -101,7 +101,7 @@
                     <navigationItem key="navigationItem" id="Ldv-Nk-ECM">
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="N1q-eN-Qrd">
                             <connections>
-                                <segue destination="fnG-Ey-cme" kind="push" id="RdU-K3-RGz"/>
+                                <segue destination="fnG-Ey-cme" kind="push" identifier="filtersSegue" id="RdU-K3-RGz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -212,17 +212,18 @@
                     <navigationItem key="navigationItem" id="8c4-TS-PbS">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="nqq-Uj-Dzf">
                             <connections>
-                                <action selector="cancelButton:" destination="fnG-Ey-cme" id="U7W-Ht-NuH"/>
+                                <action selector="cancelButtonAction:" destination="fnG-Ey-cme" id="kQB-WT-NJ8"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Apply" id="ogO-WR-lko">
                             <connections>
-                                <action selector="applyButton:" destination="fnG-Ey-cme" id="Duv-Jo-Aa7"/>
+                                <action selector="applyButtonAction:" destination="fnG-Ey-cme" id="Rbi-9m-dtW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backdrop" destination="sS5-d6-fj9" id="HQB-BB-On3"/>
+                        <outlet property="cancelButton" destination="nqq-Uj-Dzf" id="Ors-aq-gjm"/>
                         <outlet property="categoriesButton" destination="huk-aG-1W8" id="gAp-kI-1BQ"/>
                         <outlet property="categoriesLabel" destination="OGt-Ye-789" id="EEO-BC-keE"/>
                         <outlet property="dealsView" destination="xC0-YY-acd" id="V7X-lJ-X32"/>

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersVCDelegate {
     var client: YelpClient!
     var searchResults: [NSDictionary]! = []
+    var filters = [ String : [ String : Bool]]()
     
     @IBOutlet weak var yalpTableView: UITableView!
     let yalpSearchBar = UISearchBar()
@@ -101,6 +102,23 @@ class YalpViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
+    }
+    
+    func filtersViewController(filtersVC: FiltersViewController, filters: [String : [String : Bool]]) {
+        println("filters in YALP OVERLORD: \(filters)")
+        self.filters = filters
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "filtersSegue"{
+            let vc = segue.destinationViewController as FiltersViewController
+            vc.delegate = self
+            
+            if (!filters.isEmpty && filters["categories"] != nil) {
+                vc.currentCategories = filters["categories"]!
+                vc.previousCategories = filters["categories"]!
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -107,14 +107,11 @@
 				4710B68B1A8B315C00260E07 /* Main.storyboard */,
 				4710B6871A8B315C00260E07 /* AppDelegate.swift */,
 				4710B6891A8B315C00260E07 /* YalpViewController.swift */,
-				4710B6AA1A8B395B00260E07 /* YelpClient.swift */,
 				47EB52391A8B3DF7006FA14C /* YalpTableViewCell.swift */,
 				4727C2FD1A9006780082FCC4 /* FiltersViewController.swift */,
 				4716BCF51A90F2D80012FC1A /* CategoriesFilterViewController.swift */,
 				4727C2FF1A900A090082FCC4 /* CategoryFilterCell.swift */,
 				4710B68E1A8B315C00260E07 /* Images.xcassets */,
-				4710B6901A8B315C00260E07 /* LaunchScreen.xib */,
-				4710B6A71A8B390D00260E07 /* yalp-Bridging-Header.h */,
 				4710B6851A8B315C00260E07 /* Supporting Files */,
 			);
 			path = yalp;
@@ -123,6 +120,9 @@
 		4710B6851A8B315C00260E07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4710B6A71A8B390D00260E07 /* yalp-Bridging-Header.h */,
+				4710B6901A8B315C00260E07 /* LaunchScreen.xib */,
+				4710B6AA1A8B395B00260E07 /* YelpClient.swift */,
 				4710B6861A8B315C00260E07 /* Info.plist */,
 			);
 			name = "Supporting Files";

@@ -59,13 +59,10 @@ class CategoriesFilterViewController: UIViewController, UITableViewDelegate, UIT
     func categoryFilterCell(categoryFilterCell: CategoryFilterCell, didChangeSwitchValue value: Bool) {
         let indexPath = categoriesTableView.indexPathForCell(categoryFilterCell)!
         categoriesDictionary[categories[indexPath.row]] = value
-        
-        println(categoriesDictionary)
     }
     
-    func backButtonClicked() -> [String : Bool] {
+    func backButtonClicked() {
         navigationController?.popViewControllerAnimated(true)
-        return categoriesDictionary
     }
     
     override func didReceiveMemoryWarning() {
